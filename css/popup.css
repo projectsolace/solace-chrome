@@ -1,0 +1,11 @@
+body {
+  width: 400px;
+  height: 220px;
+}
+.vertical-offset-10{
+    padding-top:10px;
+}
+
+#loginHeader {
+  text-align: center;
+}
