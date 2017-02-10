@@ -27,6 +27,7 @@
     "notifications",
     "geolocation",
     "<all_urls>",
+    "storage",
     "https://solace-admin.herokuapp.com/api/tokens/sessions/create"
   ]
 }

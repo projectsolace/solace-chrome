@@ -5,9 +5,19 @@
 // });
 
 
-//example of using a message handler from the inject scripts
-chrome.extension.onMessage.addListener(
-  function(request, sender, sendResponse) {
-  	chrome.pageAction.show(sender.tab.id);
-    sendResponse();
-  });
+chrome.storage.sync.get('id_token', function(result){
+  if(result.id_token === undefined) {
+    sendResponse({'authenticated': false});
+  } else {
+    sendResponse({'authenticated': true, 'id_token': result.id_token});
+  }
+});
+
+chrome.extension.onMessage.addListener(function(request, sender, sendResponse) {
+  if(request.id_token){
+    chrome.storage.sync.set({'id_token': request.id_token}, function() {
+      console.log('id_token saved in storage');
+
+    });
+  }
+});

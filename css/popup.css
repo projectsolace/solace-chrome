@@ -21,11 +21,18 @@ body {
 }
 
 .finish-button {
-  margin-top: 1%;
+  margin-top: 2%;
   float: right;
 }
 
+.signout-button {
+  margin-top: 2%;
+}
 .text-form {
   margin-top: 5%;
   display:none;
+}
+
+#login-container{
+  display: none;
 }
