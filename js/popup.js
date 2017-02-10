@@ -9,7 +9,8 @@ $(document).ready(function(){
         url: "https://solace-admin.herokuapp.com/api/tokens/sessions/create",
         success: function(data){
 
-          $('body').html('<div class="form-group col-md-4 text-form"> <label for="text">What"s on your mind today: </label> <textarea class="form-control" rows="6" id="comment"></textarea><button type="button" class="btn btn-success finish-button">Finish</button></div>');
+          $('.text-form').show();
+          $('#login-container').hide();
         },
         error: function() {
           $("#invalid").show();

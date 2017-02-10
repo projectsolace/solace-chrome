@@ -13,7 +13,7 @@
     <title>Solace</title>
   </head>
   <body>
-      <div class="container">
+      <div class="container" id = "login-container">
           <div class="row vertical-offset-10">
             <div id = 'invalid'>Invalid Credential</div>
             <h3 id = "loginHeader">Welcome to Solace</h3>
@@ -40,6 +40,11 @@
         </div>
       </div>
 
+      <div class="form-group col-md-4 text-form">
+        <label for="text">What"s on your mind today: </label>
+        <textarea class="form-control" rows="6" id="comment"></textarea>
+        <button type="button" class="btn btn-success finish-button">Finish</button>
+      </div>
 
   </body>
 </html>
