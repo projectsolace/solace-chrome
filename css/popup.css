@@ -3,7 +3,7 @@ body {
   height: 220px;
 }
 .vertical-offset-10{
-    padding-top:10px;
+  padding-top:10px;
 }
 
 #loginHeader {
@@ -20,12 +20,18 @@ body {
   display: none;
 }
 
-#finish-button {
+#disabled-button {
   margin-top: 3%;
   float: right;
 }
 
-#signout-button {
+#submit-button {
+  margin-top: 3%;
+  float: right;
+  display: none;
+}
+
+#logout-button {
   margin-top: 3%;
 }
 
@@ -42,4 +48,9 @@ body {
   display: none;
   text-align: center;
   color: green;
+  margin-bottom: 2%;
+}
+
+#character-count {
+  text-align: right;
 }

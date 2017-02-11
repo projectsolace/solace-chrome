@@ -1,14 +1,12 @@
 $(document).ready(function(){
-  let email  = $(".email").val();
-  let passowrd = $(".password").val();
+  let email  = $('.email').val();
+  let password = $('.password').val();
 
   chrome.storage.sync.get('id_token', function(result){
-    if(result.id_token === undefined || result.id_token === null) {
+    if (result.id_token === undefined || result.id_token === null) {
       $('#login-container').show();
     } else {
-
       $('.text-form').show();
-
     }
   });
 
@@ -17,11 +15,10 @@ $(document).ready(function(){
   });
 
   $('#loginForm').submit(function(){
-
       $.ajax({
-        type: "POST",
+        type: 'POST',
         data: $(this).serialize(),
-        url: "https://solace-admin.herokuapp.com/api/tokens/sessions/create",
+        url: 'https://solace-admin.herokuapp.com/api/tokens/sessions/create',
         success: function(data){
 
           $('.text-form').show();
@@ -31,53 +28,70 @@ $(document).ready(function(){
           chrome.storage.sync.set({'id_token': data.id_token, 'user': data.user}, function(){
             console.log('id_token saved in storage');
           });
-
         },
         error: function() {
-          $("#invalid").show();
-
+          $('#invalid').show();
         }
       });
       return false;
   });
 
-  $('#signout-button').click(function(){
+  $('#logout-button').click(function(){
       chrome.storage.sync.remove(['id_token', 'user'], function(){
-        console.log('Sign out successful');
+        console.log('Successfully logged out')
         $('#comment').val('');
         $('.text-form').hide();
         $('#login-container').show();
-        $("#invalid").hide();
+        $('#invalid').hide();
         $('form').trigger('reset');
-
       });
   });
 
-  $('#finish-button').click(function(){
-
+  $('#submit-button').click(function(){
     var comment = $('#comment').val();
     $('#watson-posted').hide();
     chrome.storage.sync.get('user', function(result){
-
-      if(result.user) {
+      if (result.user) {
          $.ajax({
-            type: "POST",
+            type: 'POST',
             data: {text: comment, userID: result.user.id},
-            url: "https://solace-admin.herokuapp.com/api/watson/write",
+            url: 'https://solace-admin.herokuapp.com/api/watson/write',
             success: function(data){
               $('#comment').val('');
               $('#watson-posted').show();
-              console.log('Successful post data to backend');
-
+              console.log('Successfully posted data to backend');
             },
             error: function() {
               console.log('Failed to post data to backend');
-
             }
          });
-
       }
     });
+  });
 
+  $('#comment').keyup(function () {
+    var min = 1000;
+    var count = $(this).val().length;
+    $('#character-count').text(count + '/1000');
+    if (count < min) {
+      $('#disabled-button').show();
+      $('#submit-button').hide();
+    } else {
+      $('#disabled-button').hide();
+      $('#submit-button').show();
+    }
+  });
+
+  $('#comment').keydown(function () {
+    var min = 1000;
+    var count = $(this).val().length;
+    $('#character-count').text(count + '/1000');
+    if (count < min) {
+      $('#disabled-button').show();
+      $('#submit-button').hide();
+    } else {
+      $('#disabled-button').hide();
+      $('#submit-button').show();
+    }
   });
 });
