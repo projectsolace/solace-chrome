@@ -47,6 +47,25 @@ $(document).ready(function(){
       });
   });
 
+  $('#comment').keyup(function () {
+    var min = 1000;
+    var count = $(this).val().length;
+    $('#character-count').text(count + '/1000');
+    if (count >= min) {
+      $('#submit-button').prop('disabled', false);
+    }
+  });
+
+  // Including keydown for long presses, such as holding down the delete button
+  $('#comment').keydown(function () {
+    var min = 1000;
+    var count = $(this).val().length;
+    $('#character-count').text(count + '/1000');
+    if (count >= min) {
+      $('#submit-button').prop('disabled', false);
+    }
+  });
+
   $('#submit-button').click(function(){
     var comment = $('#comment').val();
     $('#watson-posted').hide();
@@ -57,6 +76,7 @@ $(document).ready(function(){
             data: {text: comment, userID: result.user.id},
             url: 'https://solace-admin.herokuapp.com/api/watson/write',
             success: function(data){
+              console.log(data)
               $('#comment').val('');
               $('#watson-posted').show();
               console.log('Successfully posted data to backend');
@@ -67,31 +87,5 @@ $(document).ready(function(){
          });
       }
     });
-  });
-
-  $('#comment').keyup(function () {
-    var min = 1000;
-    var count = $(this).val().length;
-    $('#character-count').text(count + '/1000');
-    if (count < min) {
-      $('#disabled-button').show();
-      $('#submit-button').hide();
-    } else {
-      $('#disabled-button').hide();
-      $('#submit-button').show();
-    }
-  });
-
-  $('#comment').keydown(function () {
-    var min = 1000;
-    var count = $(this).val().length;
-    $('#character-count').text(count + '/1000');
-    if (count < min) {
-      $('#disabled-button').show();
-      $('#submit-button').hide();
-    } else {
-      $('#disabled-button').hide();
-      $('#submit-button').show();
-    }
   });
 });

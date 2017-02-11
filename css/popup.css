@@ -20,15 +20,9 @@ body {
   display: none;
 }
 
-#disabled-button {
-  margin-top: 3%;
-  float: right;
-}
-
 #submit-button {
   margin-top: 3%;
   float: right;
-  display: none;
 }
 
 #logout-button {
