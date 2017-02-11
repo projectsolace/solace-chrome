@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html>
   <head>
@@ -15,18 +14,18 @@
   <body>
       <div class="container" id = "login-container">
           <div class="row vertical-offset-10">
-            <div id = 'invalid'>Invalid Credential</div>
-            <h3 id = "loginHeader">Welcome to Solace</h3>
+            <div id="invalid">Invalid credentials. Please try again.</div>
+            <h3 id="loginHeader">Welcome to Solace</h3>
             <div class="col-md-4 col-md-offset-4">
               <div class="panel panel-default">
                 <div class="panel-heading">
-                  <h3 class="panel-title">Please sign in</h3>
+                  <h3 class="panel-title">Please log in</h3>
               </div>
                 <div class="panel-body">
                   <form id = "loginForm" role="form">
                     <fieldset>
                       <div class="form-group">
-                        <input class="form-control email" autocomplete="off" placeholder="E-mail" name="email" type="text">
+                        <input class="form-control email" autocomplete="off" placeholder="Email" name="email" type="text">
                       </div>
                       <div class="form-group">
                         <input class="form-control password" autocomplete="off" placeholder="Password" name="password" type="password">
@@ -42,11 +41,13 @@
 
 
       <div class="form-group col-md-4 text-form">
-        <div id = 'watson-posted'>Sucessful posted to Watson</div>
-        <label for="text">What"s on your mind today: </label>
+        <div id="watson-posted">Your thoughts have been sent to Watson!<br>Check your phone for the latest analysis.</div>
+        <label for="text">What's on your mind today?</label>
         <textarea class="form-control" rows="6" id="comment"></textarea>
-        <button type="button" class="btn btn-danger" id = "signout-button">Sign Out</button>
-        <button type="submit" class="btn btn-success" id="finish-button">Submit</button>
+        <div id="character-count">0/1000</div>
+        <button type="button" class="btn btn-info" id="logout-button">Log Out</button>
+        <button type="submit" class="btn btn-success" id="submit-button">Submit</button>
+        <button type="button" disabled class="btn" id="disabled-button">Submit</button>
       </div>
 
   </body>
