@@ -20,14 +20,15 @@ body {
   display: none;
 }
 
-.finish-button {
-  margin-top: 2%;
+#finish-button {
+  margin-top: 3%;
   float: right;
 }
 
-.signout-button {
-  margin-top: 2%;
+#signout-button {
+  margin-top: 3%;
 }
+
 .text-form {
   margin-top: 5%;
   display:none;
@@ -35,4 +36,10 @@ body {
 
 #login-container{
   display: none;
+}
+
+#watson-posted {
+  display: none;
+  text-align: center;
+  color: green;
 }
